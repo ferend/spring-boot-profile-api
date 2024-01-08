@@ -1,6 +1,6 @@
 # Spring Boot Profile API,
 
-![Java](https://img.shields.io/badge/Java-11-blue.svg)
+![Java](https://img.shields.io/badge/Java-17-blue.svg)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.5.3-green.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
