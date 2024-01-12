@@ -1,9 +1,13 @@
 package com.fed.profile.api;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public class Profile {
     
     private String id;
+    @NotEmpty
     private String name;
+    
 
     public Profile(String id, String name) {
         this.id = id;
