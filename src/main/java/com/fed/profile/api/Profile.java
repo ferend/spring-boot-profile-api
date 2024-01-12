@@ -1,5 +1,6 @@
 package com.fed.profile.api;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotEmpty;
 
 public class Profile {
@@ -8,7 +9,16 @@ public class Profile {
     @NotEmpty
     private String name;
     
+    private String contentType;
+    
+    @JsonIgnore
+    private byte[] data;
+    
 
+    public Profile() {
+ 
+    }
+    
     public Profile(String id, String name) {
         this.id = id;
         this.name = name;
@@ -29,5 +39,21 @@ public class Profile {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public byte[] getData() {
+        return data;
+    }
+
+    public void setData(byte[] data) {
+        this.data = data;
+    }
+
+    public String getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
     }
 }
