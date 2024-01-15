@@ -29,13 +29,13 @@ public class ProfileApiController {
     }
     
     @GetMapping("/profiles")
-    public Collection<Profile> get() {
+    public Iterable<Profile> get() {
         return profileService.get();
     }
 
     // This annotation says if you have mapping some param. with {id} just put whatever is in the "id" 
     @GetMapping("/profiles/{id}")
-    public Profile get(@PathVariable String id) {
+    public Profile get(@PathVariable Integer id) {
         Profile profile = profileService.get(id);
         
         if(profile == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
@@ -43,10 +43,9 @@ public class ProfileApiController {
     }
 
     @DeleteMapping("/profiles/{id}")
-    public void delete(@PathVariable String id) {
-        Profile profile = profileService.remove(id);
-        
-        if(profile == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    public void delete(@PathVariable Integer id) {
+        profileService.remove(id);
+        //if(profile == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
     
     //Wrapper method inside SpringBoot. Converts the file.

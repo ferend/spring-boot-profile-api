@@ -2,10 +2,15 @@ package com.fed.profile.api.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotEmpty;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
+@Table("PROFILES")
 public class Profile {
     
-    private String id;
+    // Tell what is the id field.
+    @Id
+    private Integer id;
     @NotEmpty
     private String name;
     
@@ -19,17 +24,12 @@ public class Profile {
  
     }
     
-    public Profile(String id, String name) {
-        this.id = id;
-        this.name = name;
-    }
 
-
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
