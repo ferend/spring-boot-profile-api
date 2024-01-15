@@ -1,16 +1,10 @@
 package com.fed.profile.api.service;
 
-// DI in action. To talk db correctly. Controllers now only know about service not db itself.
-
 import com.fed.profile.api.model.Profile;
 import com.fed.profile.api.repository.ProfileRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 
 @Component
 @Service

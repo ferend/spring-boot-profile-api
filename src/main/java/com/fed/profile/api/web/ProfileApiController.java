@@ -8,32 +8,25 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
-import java.util.*;
 
-//Spring Boot works with annotations, so you have to declare what that class does.
 @RestController
 public class ProfileApiController {
-    
+
     private final ProfileService profileService;
 
-    // Constructor injection. Spring scans classes and finds that service. Creates instance and injects.
-    // Can also use @AutoWired instead of constructing.
     public ProfileApiController(ProfileService profileService) {
         this.profileService = profileService;
     }
-
-    //You need to decide user/browser going to send HTTP Request you map it.
 
     @GetMapping("/profiles")
     public Iterable<Profile> get() {
         return profileService.get();
     }
 
-    // This annotation says if you have mapping some param. with {id} just put whatever is in the "id" 
     @GetMapping("/profiles/{id}")
     public Profile get(@PathVariable Integer id) {
         Profile profile = profileService.get(id);
-        
+
         if(profile == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         return profile;
     }
@@ -41,14 +34,13 @@ public class ProfileApiController {
     @DeleteMapping("/profiles/{id}")
     public void delete(@PathVariable Integer id) {
         profileService.remove(id);
-        //if(profile == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
-    
-    //Wrapper method inside SpringBoot. Converts the file.
-    @PostMapping("/profiles")
-    public Profile create (@RequestPart("data") MultipartFile file) throws IOException {
 
-       Profile profile = profileService.save(file.getOriginalFilename(), file.getContentType(), file.getBytes());
+    // Updated create method to accept the name parameter
+    @PostMapping("/profiles")
+    public Profile create(@RequestParam String name,
+                          @RequestPart("data") MultipartFile file) throws IOException {
+        Profile profile = profileService.save(name, file.getContentType(), file.getBytes());
         return profile;
     }
 }

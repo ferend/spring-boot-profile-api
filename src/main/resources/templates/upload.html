@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile Upload</title>
+</head>
+<body>
+
+<h2>Profile Upload</h2>
+
+<!-- Form for uploading profile with name -->
+<form id="uploadForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="fileupload">Choose a file:</label>
+    <input id="fileupload" type="file" name="fileupload" required/>
+
+    <button type="button" onclick="uploadFile()">Upload</button>
+</form>
+
+<script>
+    async function uploadFile() {
+        let name = document.getElementById("name").value;
+        if (name.trim() === "") {
+            alert("Please enter a name before uploading.");
+            return;
+        }
+
+        let fileInput = document.getElementById("fileupload");
+
+        let formData = new FormData();
+        formData.append("name", name);
+        formData.append("data", fileInput.files[0]);
+
+        await fetch('http://localhost:8080/profiles', {
+            method: "POST",
+            body: formData
+        }).then(result => result.text())
+            .then(text => alert(text));
+    }
+</script>
+
+</body>
+</html>
