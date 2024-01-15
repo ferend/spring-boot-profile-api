@@ -23,11 +23,7 @@ public class ProfileApiController {
     }
 
     //You need to decide user/browser going to send HTTP Request you map it.
-    @GetMapping("/")
-    public String hello() {
-        return "Hello word";
-    }
-    
+
     @GetMapping("/profiles")
     public Iterable<Profile> get() {
         return profileService.get();
