@@ -1,5 +1,7 @@
-package com.fed.profile.api;
+package com.fed.profile.api.web;
 
+import com.fed.profile.api.model.Profile;
+import com.fed.profile.api.service.ProfileService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;

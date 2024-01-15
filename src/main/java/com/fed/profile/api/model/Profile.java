@@ -1,4 +1,4 @@
-package com.fed.profile.api;
+package com.fed.profile.api.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotEmpty;

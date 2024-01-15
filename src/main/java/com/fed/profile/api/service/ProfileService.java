@@ -1,7 +1,8 @@
-package com.fed.profile.api;
+package com.fed.profile.api.service;
 
 // DI in action. To talk db correctly. Controllers now only know about service not db itself.
 
+import com.fed.profile.api.model.Profile;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 

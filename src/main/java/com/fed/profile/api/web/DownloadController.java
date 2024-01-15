@@ -1,5 +1,7 @@
-package com.fed.profile.api;
+package com.fed.profile.api.web;
 
+import com.fed.profile.api.model.Profile;
+import com.fed.profile.api.service.ProfileService;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
