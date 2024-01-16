@@ -36,4 +36,7 @@ public class ProfileService {
         profileRepository.save(profile);
         return profile;
     }
+    public Profile getProfileByName(String name) {
+        return profileRepository.findByName(name);
+    }
 }

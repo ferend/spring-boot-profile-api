@@ -19,22 +19,21 @@ This project is a backend system developed using Java and Spring Boot. It provid
 
 ## Getting Started
 
-### Prerequisites
-- Java JDK
-- Maven
-
-
-### Deployment
-Deploy the backend to your preferred cloud platform following your deployment practices.
-
-
-#### To quick test: 
+#### To quick test:
 ````
 - Clone repository.
 - Build package.
 - Run jar file located in target folder.
 - Go to localhost:8080
+- For database console, go to localhost:8080/h2-console
 ````
+
+### Prerequisites
+- Java JDK
+- Maven
+
+### Deployment
+Deploy the backend to your preferred cloud platform following your deployment practices.
 
 1. Build the JAR file:
 Use the Maven package command to build the Spring Boot project and generate the JAR file. Open a terminal and navigate to your project's root directory, then run:

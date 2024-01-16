@@ -18,18 +18,20 @@ public class DownloadController {
     }
 
 
-    @GetMapping("/download/{id}")
-    public ResponseEntity<byte[]> download (@PathVariable Integer id) {
+    @GetMapping("/download/{name}")
+    public ResponseEntity<byte[]> download(@PathVariable String name) {
+        Profile profile = profileService.getProfileByName(name);
         
-        Profile profile = profileService.get(id);
-        if(profile == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        
+        if (profile == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Profile not found");
+        }
+
         byte[] data = profile.getData();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.valueOf(profile.getContentType()));
-        // Again spring specific wrapper. Tell the content type to frontend.
         ContentDisposition build = ContentDisposition.builder("attachment").filename(profile.getName()).build();
         headers.setContentDisposition(build);
+
         return new ResponseEntity<>(data, headers, HttpStatus.OK);
     }
 }

@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to My Profile App</title>
-    <!-- Include Bootstrap CSS -->
+    <title>ProfileAPI</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 
@@ -19,15 +18,29 @@
             Explore the profiles using the
             <a class="btn btn-primary btn-lg" href="/profiles" role="button">View Profiles</a> endpoint.
         </p>
-        <!-- Add a button to navigate to the upload page -->
         <a class="btn btn-success btn-lg" href="/upload.html" role="button">Upload Profile</a>
+
+        <div class="form-group mt-3">
+            <label for="profileName">Enter Profile Name:</label>
+            <input type="text" class="form-control" id="profileName" placeholder="Enter profile name">
+        </div>
+
+        <button class="btn btn-info btn-lg" onclick="downloadProfile()">Download Profile</button>
     </div>
 </div>
 
-<!-- Include Bootstrap JS and Popper.js for Bootstrap functionality -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script>
+    function downloadProfile() {
+        var profileName = document.getElementById('profileName').value;
+
+        // Redirect to the download endpoint with the entered profile name
+        window.location.href = '/download/' + encodeURIComponent(profileName);
+    }
+</script>
 </body>
 
 </html>

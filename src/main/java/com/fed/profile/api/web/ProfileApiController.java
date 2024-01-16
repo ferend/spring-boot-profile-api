@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
+import java.util.Random;
 
 @RestController
 public class ProfileApiController {
@@ -39,8 +40,13 @@ public class ProfileApiController {
     // Updated create method to accept the name parameter
     @PostMapping("/profiles")
     public Profile create(@RequestParam String name,
-                          @RequestPart("data") MultipartFile file) throws IOException {
-        Profile profile = profileService.save(name, file.getContentType(), file.getBytes());
-        return profile;
+                          @RequestPart(value = "data", required = false) MultipartFile file) throws IOException {
+        if (file != null) {
+            return profileService.save(name, file.getContentType(), file.getBytes());
+        } else {
+            // If file is not present, create a profile without data
+            return profileService.save(name, null, null);
+        }
     }
+    
 }
