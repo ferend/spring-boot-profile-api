@@ -10,7 +10,6 @@ This project is a backend system developed using Java and Spring Boot. It provid
 - [Features](#features)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
-- [API Endpoints](#api-endpoints)
 - [Deployment](#deployment)
 
 ## Features
@@ -24,13 +23,38 @@ This project is a backend system developed using Java and Spring Boot. It provid
 - Java JDK
 - Maven
 
-### API Endpoints
 
 ### Deployment
 Deploy the backend to your preferred cloud platform following your deployment practices.
 
-To quick test: 
+
+#### To quick test: 
+````
 - Clone repository.
 - Build package.
 - Run jar file located in target folder.
 - Go to localhost:8080
+````
+
+1. Build the JAR file:
+Use the Maven package command to build the Spring Boot project and generate the JAR file. Open a terminal and navigate to your project's root directory, then run:
+
+```
+mvn clean package
+````
+This command will clean the project, compile the code, run tests, and package the application into a JAR file. You can find the generated JAR file in the target directory.
+
+2. Choose a Hosting Platform:
+Decide where you want to host the Spring Boot application. Common choices include cloud platforms like AWS, Google Cloud, Azure, or simpler solutions like Heroku. For testing purposes, you might also consider using a local server.
+
+3. Deploy to a Cloud Platform:
+If you choose a cloud platform, you'll need to follow their specific deployment instructions. Here is a general guide for deploying a Spring Boot application to Heroku:
+
+    Create a Heroku account if you don't have one.
+    Install the Heroku CLI: Heroku CLI Installation
+    Login to your Heroku account using the CLI: heroku login
+    Navigate to your project's root directory.
+    Create a Heroku app: heroku create
+    Deploy your application: git push heroku master
+
+After the deployment is complete, you can access your Spring Boot application through the provided Heroku URL.
